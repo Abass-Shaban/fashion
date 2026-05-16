@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - BLACK MECH</title>
+    <link rel="stylesheet" href="product-detail.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="menu">
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="fashions.html">DESIGNS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+    </header>
+
+    <div class="product-container">
+        <div class="product-gallery">
+            <div class="main-image">
+                <img id="mainProductImage" src="fash/fash2.jpeg" alt="Product Image">
+            </div>
+            <div class="thumbnail-container">
+                <img class="thumbnail active" src="fash/fash2.jpeg" alt="Thumbnail 1" onclick="changeImage(this)">
+                <img class="thumbnail" src="fash/Untitled.jpeg" alt="Thumbnail 2" onclick="changeImage(this)">
+                <img class="thumbnail" src="fash/fash4.jpeg" alt="Thumbnail 3" onclick="changeImage(this)">
+                <img class="thumbnail" src="fash/fash.jpeg" alt="Thumbnail 4" onclick="changeImage(this)">
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1 id="productName">New Collection</h1>
+            
+            <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.9 out of 5)</span>
+                <span class="reviews">128 reviews</span>
+            </div>
+
+            <div class="price-section">
+                <span class="price">KES 2,500</span>
+                <span class="original-price">KES 3,500</span>
+                <span class="discount">-29%</span>
+            </div>
+
+            <p class="description">
+                Step into confidence with our latest fashion collection — where timeless design meets modern style. Every piece is crafted with premium-quality materials, attention to detail, and a perfect fit to elevate your everyday look.
+            </p>
+
+            <div class="size-selector">
+                <h3>Select Size:</h3>
+                <div class="sizes">
+                    <button class="size-btn">XS</button>
+                    <button class="size-btn">S</button>
+                    <button class="size-btn active">M</button>
+                    <button class="size-btn">L</button>
+                    <button class="size-btn">XL</button>
+                    <button class="size-btn">XXL</button>
+                </div>
+            </div>
+
+            <div class="color-selector">
+                <h3>Select Color:</h3>
+                <div class="colors">
+                    <button class="color-btn active" style="background: #000;"></button>
+                    <button class="color-btn" style="background: #fff;"></button>
+                    <button class="color-btn" style="background: #ff6b35;"></button>
+                    <button class="color-btn" style="background: #00d4ff;"></button>
+                </div>
+            </div>
+
+            <div class="quantity-selector">
+                <h3>Quantity:</h3>
+                <div class="quantity">
+                    <button class="qty-btn" onclick="decreaseQty()">-</button>
+                    <input type="number" id="quantity" value="1" min="1" max="10">
+                    <button class="qty-btn" onclick="increaseQty()">+</button>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="add-to-cart">ADD TO CART</button>
+                <button class="buy-now">BUY NOW</button>
+            </div>
+
+            <div class="delivery-info">
+                <div class="info-item">
+                    <span class="icon">🚚</span>
+                    <div>
+                        <strong>Free Delivery</strong>
+                        <p>Within Nairobi - 2-3 business days</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="icon">🔄</span>
+                    <div>
+                        <strong>Easy Returns</strong>
+                        <p>7-day return policy</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="icon">💳</span>
+                    <div>
+                        <strong>Secure Payment</strong>
+                        <p>M-Pesa, Card, Bank Transfer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(thumbnail) {
+            const mainImage = document.getElementById('mainProductImage');
+            mainImage.src = thumbnail.src;
+            
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        function increaseQty() {
+            const input = document.getElementById('quantity');
+            if (input.value < 10) {
+                input.value = parseInt(input.value) + 1;
+            }
+        }
+
+        function decreaseQty() {
+            const input = document.getElementById('quantity');
+            if (input.value > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.color-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
